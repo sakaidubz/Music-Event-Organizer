@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('costs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();$table->unsignedBigInteger('event_id');
-            $table->string('description', 140);
-            $table->decimal('amount');
-            $table->string('type');
+        Schema::table('performers', function (Blueprint $table) {
+            $table->unsignedBigInteger('event_id')->nullable();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
@@ -30,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('costs');
+        Schema::table('performers', function (Blueprint $table) {
+            $table->dropForeign(['event_id']);
+            $table->dropColumn('event_id');
+        });
     }
 };

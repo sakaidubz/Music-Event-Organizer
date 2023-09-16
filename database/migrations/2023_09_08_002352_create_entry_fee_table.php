@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('entry_fee', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('event_id');
             $table->decimal('ticket_price');
             $table->integer('number_of_guests');
             $table->decimal('total_revenue');
             $table->timestamps();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

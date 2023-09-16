@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('performers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('event_id');
             $table->string('performer_name');
             $table->string('contact_details');
             $table->timestamps();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

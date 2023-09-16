@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('event_id');
             $table->string('description', 140);
             $table->date('date');
             $table->timestamps();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('event_id');
             $table->string('guest_name');
             $table->string('contact_details');
             $table->string('attendance_status');
             $table->timestamps();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

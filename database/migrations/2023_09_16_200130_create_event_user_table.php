@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('costs', function (Blueprint $table) {
+        Schema::create('event_user', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();$table->unsignedBigInteger('event_id');
-            $table->string('description', 140);
-            $table->decimal('amount');
-            $table->string('type');
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
+            
+            // 外部キー制約
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            //event_idとuser_idの組み合わせの重複を防ぐ
+            $table->unique(['event_id', 'user_id']);
         });
     }
 
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('costs');
+        Schema::dropIfExists('event_user');
     }
 };
