@@ -1,7 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\CreateEventController;
+use App\Http\Controllers\CostManagerController;
+use App\Http\Controllers\EventEditorController;
+use App\Http\Controllers\AddPlanController;
+use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\GuestlistController;
+use App\Http\Controllers\ToDoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +23,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/mypage', [MyPageController::class, 'index'])->name('my-page');
+Route::get('/create-event', [CreateEventController::class, 'index'])->name('create-event');
+Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager');
+Route::get('/event-editor', [EventEditorController::class, 'index'])->name('event-editor');
+Route::get('/add-plan', [AddPlanController::class, 'index'])->name('add-plan');
+Route::get('/calender', [CalenderController::class, 'index'])->name('calender');
+Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist');
+Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
