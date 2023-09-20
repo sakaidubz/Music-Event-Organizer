@@ -12,8 +12,32 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('my-page')" :active="request()->routeIs('my-page')">
+                        {{ __('My Page') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('event-editor')" :active="request()->routeIs('event-editor')">
+                        {{ __('Event Editor') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('calender')" :active="request()->routeIs('calender')">
+                        {{ __('Calender') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('cost-manager')" :active="request()->routeIs('cost-manager')">
+                        {{ __('Cost Manager') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('to-do')" :active="request()->routeIs('to-do')">
+                        {{ __('To Do') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('add-plan')" :active="request()->routeIs('add-plan')">
+                        {{ __('Add Plan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('guestlist')" :active="request()->routeIs('guestlist')">
+                        {{ __('Create Event') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('create-event')" :active="request()->routeIs('create-event')">
+                        {{ __('Create Event') }}
                     </x-nav-link>
                 </div>
             </div>
