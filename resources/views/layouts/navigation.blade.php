@@ -15,9 +15,6 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('my-page')" :active="request()->routeIs('my-page')">
-                        {{ __('My Page') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('event-editor')" :active="request()->routeIs('event-editor')">
                         {{ __('Event Editor') }}
                     </x-nav-link>
@@ -34,7 +31,7 @@
                         {{ __('Add Plan') }}
                     </x-nav-link>
                     <x-nav-link :href="route('guestlist')" :active="request()->routeIs('guestlist')">
-                        {{ __('Create Event') }}
+                        {{ __('Guestlist') }}
                     </x-nav-link>
                     <x-nav-link :href="route('create-event')" :active="request()->routeIs('create-event')">
                         {{ __('Create Event') }}
