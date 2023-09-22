@@ -34,6 +34,9 @@ Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middlewar
 
 Route::delete('/events/{event}/leave', [EventEditorController::class, 'leave'])->name('events.leave')->middleware('auth');
 
+Route::post('/create-event', [CreateEventController::class, 'store']);
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

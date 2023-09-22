@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $fillable = [
+        'name',
+        'start_date',
+        'start_time',
+        'end_date',
+        'end_time',
+        'venue',
+        'address'
+    ];
+    
     use HasFactory;
     
     //userテーブルと多対多

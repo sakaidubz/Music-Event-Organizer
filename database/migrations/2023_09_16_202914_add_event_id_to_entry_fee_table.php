@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('entry_fee', function (Blueprint $table) {
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            if (!Schema::hasColumn('entry_fee', 'event_id')) {
+                $table->unsignedBigInteger('event_id')->nullable();
+                $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            }
         });
     }
 

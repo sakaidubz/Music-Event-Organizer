@@ -14,10 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::table('costs', function (Blueprint $table) {
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            if (!Schema::hasColumn('costs', 'event_id')) {
+                $table->unsignedBigInteger('event_id')->nullable();
+                $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            }
         });
     }
+
 
     /**
      * Reverse the migrations.
