@@ -23,9 +23,10 @@ class CreateEventController extends Controller
             'event.end_time' => 'required',
             'event.venue' => 'required',
             'event.address' => 'required'
-            ]);
-        
-        Event::create([
+        ]);
+    
+        // イベントをデータベースに保存
+        $event = Event::create([
             'name' => $data['event']['name'],
             'start_date' => $data['event']['start_date'],
             'start_time' => $data['event']['start_time'],
@@ -34,8 +35,11 @@ class CreateEventController extends Controller
             'venue' => $data['event']['venue'],
             'address' => $data['event']['address']
         ]);
-
-            
-        return redirect()->route('home');
+    
+        // 現在のユーザーとイベントとの関連付け
+        auth()->user()->events()->attach($event->id);
+    
+        // 一覧ページにリダイレクト
+        return redirect()->route('event-editor')->with('success', 'イベントが作成されました。');
     }
 }

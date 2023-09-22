@@ -24,9 +24,7 @@ use App\Http\Controllers\ToDoController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/create-event', [CreateEventController::class, 'index'])->name('create-event')->middleware('auth');
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
-Route::get('/event-editor', [EventEditorController::class, 'index'])->name('event-editor')->middleware('auth');
 Route::get('/add-plan', [AddPlanController::class, 'index'])->name('add-plan')->middleware('auth');
 Route::get('/calender', [CalenderController::class, 'index'])->name('calender')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
@@ -34,8 +32,12 @@ Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middlewar
 
 Route::delete('/events/{event}/leave', [EventEditorController::class, 'leave'])->name('events.leave')->middleware('auth');
 
-Route::post('/create-event', [CreateEventController::class, 'store']);
+Route::get('/create-event', [CreateEventController::class, 'index'])->name('create-event')->middleware('auth');
+Route::post('/create-event', [CreateEventController::class, 'store'])->middleware('auth');
 
+Route::get('/event-editor', [EventEditorController::class, 'index'])->name('event-editor')->middleware('auth');
+Route::get('/event-editor/{event_id}', [EventEditorController::class, 'edit'])->name('event-editor.edit');
+Route::post('/event-editor/{event_id}', [EventEditorController::class, 'update'])->name('event-editor.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

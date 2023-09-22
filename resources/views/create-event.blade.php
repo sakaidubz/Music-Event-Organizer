@@ -8,7 +8,7 @@
     <main class="m-4 rounded-lg bg-white shadow p-6">
         <div class="event-info mb-6">
             <h2 class="text-2xl font-bold mb-4">イベント情報</h2>
-            <form action="/create-event" method="post">
+            <form action="/create-event" method="post" onsubmit="return confirmSubmit();">
                 @csrf
                 <div class="mb-4">
                     <label class="block mb-2 font-semibold">イベント名</label>
@@ -49,3 +49,10 @@
         <x-footer />
     </x-slot>
 </x-app-layout>
+
+<script>
+    function confirmSubmit() {
+        var result = confirm("本当に送信してよろしいですか？");
+        return result;
+    }
+</script>
