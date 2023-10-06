@@ -8,7 +8,7 @@ use App\Http\Controllers\CreateEventController;
 use App\Http\Controllers\CostManagerController;
 use App\Http\Controllers\EventEditorController;
 use App\Http\Controllers\AddPlanController;
-use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GuestlistController;
 use App\Http\Controllers\ToDoController;
 
@@ -16,7 +16,7 @@ use App\Http\Controllers\ToDoController;
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
 Route::get('/add-plan', [AddPlanController::class, 'index'])->name('add-plan')->middleware('auth');
-Route::get('/calender', [CalenderController::class, 'index'])->name('calender')->middleware('auth');
+Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
 Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middleware('auth');
 

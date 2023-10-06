@@ -18,8 +18,8 @@
                     <x-nav-link :href="route('event-editor')" :active="request()->routeIs('event-editor')">
                         {{ __('Event Editor') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('calender')" :active="request()->routeIs('calender')">
-                        {{ __('Calender') }}
+                    <x-nav-link :href="route('calendar')" :active="request()->routeIs('calendar')">
+                        {{ __('Calendar') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cost-manager')" :active="request()->routeIs('cost-manager')">
                         {{ __('Cost Manager') }}
