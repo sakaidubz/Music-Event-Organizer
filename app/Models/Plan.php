@@ -9,6 +9,12 @@ class Plan extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'event_id',
+        'description',
+        'date'
+    ];
+    
     public function event()
     {
         return $this->belongsTo(Event::class);

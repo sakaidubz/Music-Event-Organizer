@@ -15,7 +15,6 @@ use App\Http\Controllers\ToDoController;
 // 各ページへのアクセス
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
-Route::get('/add-plan', [AddPlanController::class, 'index'])->name('add-plan')->middleware('auth');
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
 Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middleware('auth');
@@ -32,6 +31,13 @@ Route::get('/event-editor/{event_id}', [EventEditorController::class, 'edit'])->
 Route::post('/event-editor/{event}', [EventEditorController::class, 'update'])->name('event-editor.update'); // イベントを編集（更新）
 Route::delete('/event-editor/{event_id}', [EventEditorController::class, 'destroy'])->name('event-editor.destroy')->middleware('auth'); // イベントを削除
 Route::post('/event-editor/{event_id}/add-user', [EventEditorController::class, 'addUser'])->name('event-editor.addUser'); // イベントにユーザーを追加
+
+// Add Planページ関連
+Route::get('/add-plan', [AddPlanController::class, 'create'])->name('add-plan.create')->middleware('auth'); // Add Planページの表示
+Route::post('/add-plan', [AddPlanController::class, 'store'])->name('add-plan.store')->middleware('auth'); // 予定の保存
+
+
+
 
 // Dashboardページ関係(不要)
 Route::get('/dashboard', function () {
