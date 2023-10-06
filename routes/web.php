@@ -17,7 +17,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('aut
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
-Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middleware('auth');
 
 Route::delete('/events/{event}/leave', [EventEditorController::class, 'leave'])->name('events.leave')->middleware('auth'); // 後で考え直す
 
@@ -35,6 +34,14 @@ Route::post('/event-editor/{event_id}/add-user', [EventEditorController::class, 
 // Add Planページ関連
 Route::get('/add-plan', [AddPlanController::class, 'create'])->name('add-plan.create')->middleware('auth'); // Add Planページの表示
 Route::post('/add-plan', [AddPlanController::class, 'store'])->name('add-plan.store')->middleware('auth'); // 予定の保存
+
+// ToDoページ関連
+Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middleware('auth'); // ToDoページの表示とToDo作成フォームの表示
+Route::post('/to-do', [ToDoController::class, 'store'])->name('to-do.store')->middleware('auth'); // ToDoの保存
+Route::post('/to-do/update-status/{id}', [ToDoController::class, 'updateStatus'])->name('to-do.update-status')->middleware('auth'); // statusの更新
+
+
+
 
 
 

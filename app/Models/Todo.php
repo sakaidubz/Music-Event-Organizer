@@ -9,6 +9,12 @@ class Todo extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'event_id',
+        'description',
+        'status'
+    ];
+    
     public function event()
     {
         return $this->belongsTo(Event::class);
