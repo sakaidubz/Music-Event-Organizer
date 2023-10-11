@@ -43,4 +43,12 @@ class ToDoController extends Controller
         
         return redirect()->route('to-do')->with('success', 'Todoのステータスが変更されました。');
     }
+    
+    public function destroy($id)
+    {
+        $todo = Todo::find($id);
+        $todo->delete();
+        
+        return redirect()->route('to-do.index')->with('success', 'ToDoが削除されました。');
+    }
 }

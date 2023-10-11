@@ -39,7 +39,7 @@ Route::post('/add-plan', [AddPlanController::class, 'store'])->name('add-plan.st
 Route::get('/to-do', [ToDoController::class, 'index'])->name('to-do')->middleware('auth'); // ToDoページの表示とToDo作成フォームの表示
 Route::post('/to-do', [ToDoController::class, 'store'])->name('to-do.store')->middleware('auth'); // ToDoの保存
 Route::post('/to-do/update-status/{id}', [ToDoController::class, 'updateStatus'])->name('to-do.update-status')->middleware('auth'); // statusの更新
-
+Route::delete('/to-do/{id}', 'ToDoController@destroy')->name('to-do.destory');->middleware('auth'); // ToDoの削除
 
 
 
