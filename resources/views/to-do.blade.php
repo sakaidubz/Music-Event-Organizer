@@ -39,15 +39,20 @@
                             <ul>
                                 @foreach($event->todos as $todo)
                                     <li>
-                                        <form action="{{ route('to-do.update-status', $todo->id)  }}" method="post" class="flex item-center" id="form-{{ $todo->id }}">
+                                        <form action="{{ route('to-do.update-status', $todo->id) }}" method="post" class="flex items-center " id="form-{{ $todo->id }}">
                                             @csrf
-                                            <div class="mr-2">
-                                                <select name="status" onchange="document.getElementById('form-{{ $todo->id }}').submit();">
+                                            <div>
+                                                <select name="status" onchange="document.getElementById('form-{{ $todo->id }}').submit();" class="p-px bg-white border rounded text-sm">
                                                     <option value="1" {{ $todo->status ? 'selected' : '' }}>完了</option>
                                                     <option value="0" {{ !$todo->status ? 'selected' : '' }}>未完了</option>
                                                 </select>
                                             </div>
-                                            <span class="description mr-2">{{ $todo->description }}</span>
+                                            <span class="text-sm text-gray-700 px-4">{{ $todo->description }}</span>
+                                        </form>
+                                        <form action="{{ route('to-do.destroy', $todo->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type='submit' class="bg-red-500 text-white my-1 p-px rounded hover:bg-red-700 transition">削除</button>
                                         </form>
                                     </li>
                                 @endforeach
