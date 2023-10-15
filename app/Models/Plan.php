@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Event;
 
 class Plan extends Model
 {
@@ -11,12 +12,19 @@ class Plan extends Model
     
     protected $fillable = [
         'event_id',
+        'title',
         'description',
-        'date'
+        'start_date',
+        'end_date',
     ];
     
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+    
+    public static function getPlans()
+    {
+        return self::with('event')->get();
     }
 }

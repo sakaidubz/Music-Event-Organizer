@@ -24,7 +24,10 @@
 
             @foreach($events as $event)
                 <div>
-                    <a href="{{ route('event-editor.edit', $event->id) }}">{{ $event->name }}</a>
+                    <span>
+                        <a href="{{ route('event-editor.edit', $event->id) }}">{{ $event->name }}</a>
+                    </span>
+                    <span style="display: inline-block; width: 60px; height: 20px; background-color: {{ $event->color }};"></span>
                 </div>
             @endforeach
         </div>

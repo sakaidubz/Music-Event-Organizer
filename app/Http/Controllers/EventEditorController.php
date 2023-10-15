@@ -55,6 +55,7 @@ class EventEditorController extends Controller
             'event.end_time' => 'required',
             'event.venue' => 'required',
             'event.address' => 'required',
+            // 'event.color' => 'nullable|regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/',
         ], $messages);
         
         // データを更新

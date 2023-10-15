@@ -15,7 +15,6 @@ use App\Http\Controllers\ToDoController;
 // 各ページへのアクセス
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
-Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
 
 Route::delete('/events/{event}/leave', [EventEditorController::class, 'leave'])->name('events.leave')->middleware('auth'); // 後で考え直す
@@ -32,7 +31,7 @@ Route::delete('/event-editor/{event_id}', [EventEditorController::class, 'destro
 Route::post('/event-editor/{event_id}/add-user', [EventEditorController::class, 'addUser'])->name('event-editor.addUser'); // イベントにユーザーを追加
 
 // Add Planページ関連
-Route::get('/add-plan', [AddPlanController::class, 'create'])->name('add-plan.create')->middleware('auth'); // Add Planページの表示
+// Route::get('/add-plan', [AddPlanController::class, 'create'])->name('add-plan.create')->middleware('auth'); // Add Planページの表示
 Route::post('/add-plan', [AddPlanController::class, 'store'])->name('add-plan.store')->middleware('auth'); // 予定の保存
 
 // ToDoページ関連
@@ -41,6 +40,12 @@ Route::post('/to-do', [ToDoController::class, 'store'])->name('to-do.store')->mi
 Route::post('/to-do/update-status/{id}', [ToDoController::class, 'updateStatus'])->name('to-do.update-status')->middleware('auth'); // statusの更新
 Route::delete('/to-do/{id}', [ToDoController::class, 'destroy'])->name('to-do.destroy')->middleware('auth'); // ToDoの削除
 
+// Calendarページ関連
+Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth'); // Calendarページの表示
+Route::get('/calendar/getPlans', [CalendarController::class, 'getPlans'])->name('calendar.getPlans')->middleware('auth'); // Calendarに表示する予定を返す
+Route::delete('/calendar/{id}', [AddPlanController::class, 'destroy'])->name('plan.destroy')->middleware('auth'); // Calendarの予定を削除する
+Route::post('/calendar/create', [CalendarController::class, 'create'])->name('calendar.create')->middleware('auth'); // Calendarの予定を新規追加する
+Route::post('/calendar/get', [CalendarController::class, 'get'])->name('calendar.get')->middleware('auth'); // Calendarの予定を新規追加する
 
 
 

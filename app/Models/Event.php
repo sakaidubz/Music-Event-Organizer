@@ -14,7 +14,8 @@ class Event extends Model
         'end_date',
         'end_time',
         'venue',
-        'address'
+        'address',
+        'color'
     ];
     
     use HasFactory;

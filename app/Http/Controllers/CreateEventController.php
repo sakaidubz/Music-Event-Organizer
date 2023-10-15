@@ -22,7 +22,8 @@ class CreateEventController extends Controller
             'event.end_date' => 'required|date',
             'event.end_time' => 'required',
             'event.venue' => 'required',
-            'event.address' => 'required'
+            'event.address' => 'required',
+            'event.color' => 'nullable|regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/',
         ]);
     
         // イベントをデータベースに保存
@@ -33,7 +34,8 @@ class CreateEventController extends Controller
             'end_date' => $data['event']['end_date'],
             'end_time' => $data['event']['end_time'],
             'venue' => $data['event']['venue'],
-            'address' => $data['event']['address']
+            'address' => $data['event']['address'],
+            'color' => $data['event']['color'],
         ]);
     
         // 現在のユーザーとイベントとの関連付け

@@ -40,6 +40,9 @@
                     <label class="block mb-2 font-semibold">住所</label>
                     <input type="text" name="event[address]" placeholder="東京都渋谷区渋谷３丁目２６−１６ 第５叶ビル 1F/B1F" class="w-full p-2 border border-gray-400 rounded" />
                 </div>
+                <div class="mb-4 form-group">
+                    @include('components.color-selector')
+                </div>
                 <input type="submit" value="Create Event" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">
             </form>
         </div>

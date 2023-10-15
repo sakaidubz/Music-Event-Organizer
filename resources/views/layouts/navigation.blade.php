@@ -27,9 +27,6 @@
                     <x-nav-link :href="route('to-do')" :active="request()->routeIs('to-do')">
                         {{ __('To Do') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('add-plan.create')" :active="request()->routeIs('add-plan.create')">
-                        {{ __('Add Plan') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('guestlist')" :active="request()->routeIs('guestlist')">
                         {{ __('Guestlist') }}
                     </x-nav-link>

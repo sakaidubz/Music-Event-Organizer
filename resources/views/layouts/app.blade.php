@@ -13,6 +13,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <!--CSS-->
+        <!--<link rel="stylesheet" href="{{ asset('build/assets/stylesheet.css') }}">-->
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

@@ -27,4 +27,10 @@ class AddPlanController extends Controller
         
         return redirect()->route('add-plan.create')->with('success', '予定が追加されました。');
     }
+    
+    public function destroy($id)
+    {
+        Plan::findOrFail($id)->delete();
+        return redirect()->route('calendar.index')->with('success', '予定が削除されました。');
+    }
 }
