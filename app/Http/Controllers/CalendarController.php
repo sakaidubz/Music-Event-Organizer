@@ -19,7 +19,8 @@ class CalendarController extends Controller
             ->join('events', 'plans.event_id', '=', 'events.id')
             ->select('plans.event_id',
                      'plans.description',
-                     'plans.date',
+                     'plans.start_date',
+                     'plans.end_date',
                      'events.name as event_name',
                      'events.color as event_color')
             ->get();
@@ -72,5 +73,23 @@ class CalendarController extends Controller
             ->where('plans.end_date', '>', $start_date)
             ->where('plans.start_date', '<', $end_date)
             ->get();
+    }
+    
+    public function getUserEvents() {
+        $user = auth()->user();
+        $events = $user->events;
+        return response()->json($events);
+    }
+    
+    public function savePlan(Request $request) {
+        $plan = new Plan();
+        $plan->title = $request->title;
+        $plan->start_date = $request->start_date;
+        $plan->end_date = $request->end_date;
+        $plan->description = $request->description;
+        $plan->event_id = $request->event_id;
+        
+        $plan->save();
+        return redirect()->back()->with('success', '予定が追加されました。');
     }
 }

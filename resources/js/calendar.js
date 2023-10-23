@@ -5,30 +5,25 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
 
-// カレンダーを表示させたいタグのidを取得
 var calendarEl = document.getElementById("calendar");
 
-// new Calender(カレンダーを表示させたいタグのid, {各種カレンダーの設定});
-// "calendar"というidがないbladeファイルではエラーが出てしまうので、if文で除外。
 if (calendarEl !== null) {
-  // ここでAPIから予定を取得する
   axios.get('/calendar/getPlans')
     .then((response) => {
       const plans = response.data.map(plan => {
         return {
-          title: `${plan.description}`,
-          start: plan.date,
+          title: `${plan.title}`,
+          start: plan.start_date,
+          end: plan.end_date,
+          discription: plan.description,
           backgroundColor: plan.event_color,
           borderColor: plan.event_color
         };
       });
 
       let calendar = new Calendar(calendarEl, {
-        // プラグインの導入(import忘れずに)
         plugins: [dayGridPlugin, timeGridPlugin],
-
-        // カレンダー表示
-        initialView: "dayGridMonth", // 最初に表示させるページの形式
+        initialView: "dayGridMonth",
         customButtons: {
           eventAddButton: {
             text: '予定を追加',
@@ -38,19 +33,17 @@ if (calendarEl !== null) {
               document.getElementById("new-start_date").value = "";
               document.getElementById("new-end_date").value = "";
               document.getElementById("new-description").value = "";
-              
+              document.getElementById("new-event").value = "";
               document.getElementById('modal-add').style.display = 'flex';
             }
           }
         },
-        headerToolbar: { // ヘッダーの設定
-          start: "prev,next today", // ヘッダー左（前月、次月、今日の順番で左から配置）
-          center: "title", // ヘッダー中央（今表示している月、年）
-          end: "eventAddButton dayGridMonth,timeGridWeek", // ヘッダー右（月形式、時間形式）
+        headerToolbar: {
+          start: "prev,next today",
+          center: "title",
+          end: "eventAddButton dayGridMonth,timeGridWeek",
         },
-        height: "auto", // 高さをウィンドウサイズに揃える
-        
-        // DBに登録した予定を表示する
+        height: "auto",
         events: function (info, successCallback, failureCallback) {
           axios
             .post("/calendar/get", {
@@ -67,10 +60,8 @@ if (calendarEl !== null) {
         },
       });
 
-      // カレンダーのレンダリング
       calendar.render();
       
-      // 新規予定追加モーダルを閉じる
       window.closeAddModal = function(){
         document.getElementById('modal-add').style.display = 'none';
       }
@@ -78,4 +69,23 @@ if (calendarEl !== null) {
     .catch((error) => {
       console.log("Error fetching plans", error);
     });
+    
+  axios.get('/user-events')
+    .then(response => {
+      const events = response.data;
+      const selectEvent = document.getElementById("new-event");
+      events.forEach(event => {
+        const option = document.createElement("option");
+        option.value = event.id;
+        option.textContent = event.name;
+        selectEvent.appendChild(option);
+      });
+      
+      document.getElementById("new-event").addEventListener("change", function() {
+        document.getElementById("selected-event-id").value = this.value;
+      })
+    .catch(error => {
+      console.log('Error fetching user events', error);
+    });
+  });
 }

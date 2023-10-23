@@ -12,18 +12,27 @@
     
     <!--カレンダー新規追加モーダル-->
     <div id="modal-add" class="modal">
-        <div class="moda-contents">
+        <div class="modal-contents">
             <form method="POST" action="{{ route('calendar.create') }}">
                 @csrf
                 <input id="new-id" type="hidden" name="id" value="" />
+                <input type="hidden" name="event_id" value="" id="selected-event-id" />
+                
+                <label for="event">イベント</label>
+                <select id="new-event"></select>
+                
                 <label for="title">タイトル</label>
                 <input id="new-title" class="input-title" type="text" name="title" value="" />
+                
                 <label for="start_date">開始日</label>
                 <input id="new-start_date" class="input-start_date" type="date" name="start_date" value="" />
+                
                 <label for="end_date">終了日</label>
                 <input id="new-end_date" class="input-end_date" type="date" name="end_date" value="" />
+                
                 <label for="description" style="display: block">内容</label>
                 <textarea id="new-description" name="description" rows="3" value=""></textarea>
+                
                 <button type="button" onclick="closeAddModal()">閉じる</button>
                 <button type="submit">保存</button>
             </form>
@@ -68,6 +77,7 @@
         display: block;
         width: 80%;
         margin: 0 0 20px;
+        border-radius: 5px;
     }
     .input-date{
         width: 27%;
