@@ -23,11 +23,11 @@
             <h2 class="text-2xl font-bold mb-4">参加中のイベント</h2>
 
             @foreach($events as $event)
-                <div>
-                    <span>
+                <div class="mb-4">
+                    <span style="display: inline-block; width: 40px; height: 20px; background-color: {{ $event->color }};"></span>
+                    <span class="m-2 text-xl">
                         <a href="{{ route('event-editor.edit', $event->id) }}">{{ $event->name }}</a>
                     </span>
-                    <span style="display: inline-block; width: 60px; height: 20px; background-color: {{ $event->color }};"></span>
                 </div>
             @endforeach
         </div>

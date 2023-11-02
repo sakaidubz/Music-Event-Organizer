@@ -43,11 +43,11 @@ Route::delete('/to-do/{id}', [ToDoController::class, 'destroy'])->name('to-do.de
 // Calendarページ関連
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar')->middleware('auth'); // Calendarページの表示
 Route::get('/calendar/getPlans', [CalendarController::class, 'getPlans'])->name('calendar.getPlans')->middleware('auth'); // Calendarに表示する予定を返す
-Route::delete('/calendar/{id}', [AddPlanController::class, 'destroy'])->name('plan.destroy')->middleware('auth'); // Calendarの予定を削除する
 Route::post('/calendar/create', [CalendarController::class, 'create'])->name('calendar.create')->middleware('auth'); // Calendarの予定を新規追加する
 Route::post('/calendar/get', [CalendarController::class, 'get'])->name('calendar.get')->middleware('auth'); // Calendarの予定を
 Route::get('/user-events', [CalendarController::class, 'getUserEvents'])->middleware('auth'); // ユーザーに関連付けられたイベントを取得
-
+Route::put('/calendar/update', [CalendarController::class, 'update'])->name('plan.update')->middleware('auth'); // 予定の更新
+Route::delete('/calendar/delete', [CalendarController::class, 'destroy'])->name('plan.destroy')->middleware('auth'); // 予定の削除
 
 
 

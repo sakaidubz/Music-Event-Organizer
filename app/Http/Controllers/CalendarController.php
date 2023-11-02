@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plan;
+use Illuminate\Support\Facades\Auth;
 
 class CalendarController extends Controller
 {
     public function index()
     {
-        return view('calendar');
+        $events = Auth::user()->events()->get();
+        return view('calendar')->with(['events'=>$events]);
     }
     
     public function getPlans()
@@ -33,13 +35,14 @@ class CalendarController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
         ], [
             'title.required' => 'タイトルは必須です。',
             'description.required' => '内容は必須です。',
             'start_date.required' => '開始日は必須です。',
             'end_date.required' => '終了日は必須です。',
+            'end_date.after_or_equal' => '終了日は開始日以降の日付である必要があります。',
         ]);
         
         $data = $request->all();
@@ -92,4 +95,37 @@ class CalendarController extends Controller
         $plan->save();
         return redirect()->back()->with('success', '予定が追加されました。');
     }
+    
+    public function update(Request $request, Plan $plan) {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ], [
+            'title.required' => 'タイトルは必須です。',
+            'description.required' => '内容は必須です。',
+            'start_date.required' => '開始日は必須です。',
+            'end_date.required' => '終了日は必須です。',
+            'end_date.after_or_equal' => '終了日は開始日以降の日付である必要があります。',
+        ]);
+        
+        $input = new Plan();
+        $input->title = $request->input('title');
+        $input->description = $request->input('description');
+        $input->start_date = $request->input('start_date');
+        $input->end_date = $request->input('end_date');
+        
+        $plan->find($request->input('id'))->fill($input->attributesToArray())->save();
+        
+        return redirect(route('calendar'));
+    }
+    
+    public function destroy(Request $request, Plan $plan)
+    {
+        $plan->find($request->input('id'))->delete();
+        
+        return redirect(route('calendar'));
+    }
+
 }

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class);
     }
+    
+    public function plans()
+    {
+        return $this->hasMany(Plan::class);
+    }
 }

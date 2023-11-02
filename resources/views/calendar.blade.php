@@ -11,7 +11,7 @@
     </div>
     
     <!--カレンダー新規追加モーダル-->
-    <div id="modal-add" class="modal">
+    <div id="modal-add" class="modal" @if($errors->any()) style="display: flex;" @endif>
         <div class="modal-contents">
             <form method="POST" action="{{ route('calendar.create') }}">
                 @csrf
@@ -23,19 +23,78 @@
                 
                 <label for="title">タイトル</label>
                 <input id="new-title" class="input-title" type="text" name="title" value="" />
+                @error('title')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 
                 <label for="start_date">開始日</label>
                 <input id="new-start_date" class="input-start_date" type="date" name="start_date" value="" />
+                @error('start_date')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 
                 <label for="end_date">終了日</label>
                 <input id="new-end_date" class="input-end_date" type="date" name="end_date" value="" />
+                @error('end_date')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 
                 <label for="description" style="display: block">内容</label>
-                <textarea id="new-description" name="description" rows="3" value=""></textarea>
+                <textarea id="new-description" name="description" rows="3"></textarea>
+                @error('description')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 
                 <button type="button" onclick="closeAddModal()">閉じる</button>
                 <button type="submit">保存</button>
             </form>
+        </div>
+    </div>
+    
+    <!--カレンダー編集モーダル-->
+    <div id="modal-update" class="modal" @if($errors->any()) style="display: flex;" @endif>
+        <div class="modal-contents">
+            <form method="POST" action="{{ route('plan.update') }}" >
+                @csrf
+                @method('PUT')
+                <input type='hidden' id='id' name='id' value="{{ old("id") }}" />
+                
+                <label for="title">タイトル</label>
+                <input id="title" class="input-title" type="text" name="title" value="{{ old("title") }}" />
+                @error('title')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
+                <label for="start_date">開始日</label>
+                <input id="start_date" class="input-start_date" type="date" name="start_date" value="{{ old("start_date") }}" />
+                @error('start_date')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
+                <label for="end_date">終了日</label>
+                <input id="end_date" class="input-end_date" type="date" name="end_date" value="{{ old("end_date") }}" />
+                @error('end_date')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
+                <label for="description" style="display: block">内容</label>
+                <textarea id="description" name="description" rows="3">{{ old("description") }}</textarea>
+                @error('description')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
+                <button type="button" onclick="closeUpdateModal()">閉じる</button>
+                <button type="submit">保存</button>
+            </form>
+            
+            <form id="delete-form" method="post" action="{{ route('plan.destroy') }}">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" id="delete-id" name="id" value="" />
+                <button class="delete" type="button" onclick="deletePlan()">削除</button>
+            </form>
+            
+
         </div>
     </div>
 
@@ -99,5 +158,9 @@
         padding: 2px;
         border: 1px solid black;
         border-radius: 5px;
+    }
+    /*予定の上ではカーソルがポインターになる*/
+    .fc-event-title-container{
+        cursor: pointer;
     }
 </style>

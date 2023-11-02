@@ -23,6 +23,11 @@ class Plan extends Model
         return $this->belongsTo(Event::class);
     }
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public static function getPlans()
     {
         return self::with('event')->get();
