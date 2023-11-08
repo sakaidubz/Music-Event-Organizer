@@ -5,10 +5,9 @@
         </h2>
         
     </x-slot>
-    <body>
-        <main>
-            
-        </main>
+    
+    <p>今後実装予定</p>
+    
         
     <x-slot name="footer">
         <x-footer />
