@@ -14,7 +14,6 @@ use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\PerformerController;
 
 // 各ページへのアクセス
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/cost-manager', [CostManagerController::class, 'index'])->name('cost-manager')->middleware('auth');
 Route::get('/guestlist', [GuestlistController::class, 'index'])->name('guestlist')->middleware('auth');
 
@@ -53,6 +52,9 @@ Route::post('/calendar/get', [CalendarController::class, 'get'])->name('calendar
 Route::get('/user-events', [CalendarController::class, 'getUserEvents'])->middleware('auth'); // ユーザーに関連付けられたイベントを取得
 Route::put('/calendar/update', [CalendarController::class, 'update'])->name('plan.update')->middleware('auth'); // 予定の更新
 Route::delete('/calendar/delete', [CalendarController::class, 'destroy'])->name('plan.destroy')->middleware('auth'); // 予定の削除
+
+// Homeページ関連
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
 

@@ -8,6 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        $events = $user->events; // ユーザーが参加中のイベントを取得
+        return view('home', compact('events'));
     }
 }
