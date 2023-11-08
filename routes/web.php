@@ -11,6 +11,7 @@ use App\Http\Controllers\AddPlanController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GuestlistController;
 use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\PerformerController;
 
 // 各ページへのアクセス
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -29,6 +30,10 @@ Route::get('/event-editor/{event_id}', [EventEditorController::class, 'edit'])->
 Route::post('/event-editor/{event}', [EventEditorController::class, 'update'])->name('event-editor.update'); // イベントを編集（更新）
 Route::delete('/event-editor/{event_id}', [EventEditorController::class, 'destroy'])->name('event-editor.destroy')->middleware('auth'); // イベントを削除
 Route::post('/event-editor/{event_id}/add-user', [EventEditorController::class, 'addUser'])->name('event-editor.addUser'); // イベントにユーザーを追加
+Route::post('/event-editor/{event_id}/performers', [PerformerController::class, 'store'])->name('performers.store');// 出演者登録フォーム
+// Route::get('/performers/{event_id}', [PerformerController::class, 'show'])->name('performers.show'); // タイムテーブル表示
+
+
 
 // Add Planページ関連
 // Route::get('/add-plan', [AddPlanController::class, 'create'])->name('add-plan.create')->middleware('auth'); // Add Planページの表示

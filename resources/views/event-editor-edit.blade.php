@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
     
+    
     @if ($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-5 ml-4" role="alert">
             <ul>
@@ -127,7 +128,12 @@
                 </div>
             </div>
         </main>
+        
+        @include('performers')
+        
+        {{-- <a href="{{ route('performers.show', ['event_id']) }}" class="btn btn-primary">タイムテーブル</a> --}}
     </div>
+    
     
     <x-slot name="footer">
         <x-footer />
