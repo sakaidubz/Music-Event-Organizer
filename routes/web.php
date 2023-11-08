@@ -30,7 +30,7 @@ Route::post('/event-editor/{event}', [EventEditorController::class, 'update'])->
 Route::delete('/event-editor/{event_id}', [EventEditorController::class, 'destroy'])->name('event-editor.destroy')->middleware('auth'); // イベントを削除
 Route::post('/event-editor/{event_id}/add-user', [EventEditorController::class, 'addUser'])->name('event-editor.addUser'); // イベントにユーザーを追加
 Route::post('/event-editor/{event_id}/performers', [PerformerController::class, 'store'])->name('performers.store');// 出演者登録フォーム
-// Route::get('/performers/{event_id}', [PerformerController::class, 'show'])->name('performers.show'); // タイムテーブル表示
+Route::get('/event-editor/{event_id}/performers', [PerformerController::class, 'show'])->name('performers.show'); // タイムテーブル表示
 
 
 

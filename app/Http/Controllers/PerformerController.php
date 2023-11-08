@@ -53,11 +53,11 @@ class PerformerController extends Controller
         return redirect()->route('event-editor.edit', ['event_id' => $event_id]);
     }
     
-    // public function show($event_id)
-    // {
-    //     $event_id = Event::find($event_id);
-    //     $performers = Performer::where('event_id', $event_id)->get(); // 出演者データを取得
-    //     return view('event-editor-edit', compact('event_id', 'performers'));
-    // }
+    public function show($event_id)
+    {
+        $event = Event::find($event_id);
+        $performers = Performer::where('event_id', $event_id)->get(); // 出演者データを取得
+        return view('timetable', compact('event', 'performers'));
+    }
 
 }
