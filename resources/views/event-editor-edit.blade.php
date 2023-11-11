@@ -26,7 +26,7 @@
         <a href="{{ route('event-editor') }}" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">イベント一覧へ戻る</a>
     </div>
     
-    <div class="container mx-auto my-4 p-4 bg-white rounded shadow">
+    <div class="max-w-7xl container mx-auto my-4 p-4 bg-white rounded shadow">
         <!-- 現在のイベントデータの表示 -->
         <div class="current-data mb-4 p-4 border border-gray-300 rounded-md bg-gray-50">
             <h3 class="text-lg font-semibold mb-2 border-b-2 pb-2">現在のイベント情報</h3>

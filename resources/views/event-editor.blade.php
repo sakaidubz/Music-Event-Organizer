@@ -18,7 +18,7 @@
     @endif
 
     
-    <main class="m-4 rounded-lg bg-white shadow p-6">
+    <main class="max-w-7xl mx-auto m-4 rounded-lg bg-white shadow p-6">
         <div class="event-list mb-6">
             <h2 class="text-2xl font-bold mb-4">参加中のイベント</h2>
 

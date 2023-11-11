@@ -11,7 +11,7 @@
         </div>
     @endif
     
-    <div class="container mx-auto my-4 p-4 bg-white rounded shadow">
+    <div class="max-w-7xl container mx-auto my-4 p-4 bg-white rounded shadow">
         <form action="{{ route('to-do.store') }}" method="post">
             @csrf
             <div class="mb-4">
