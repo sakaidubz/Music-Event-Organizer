@@ -2,7 +2,8 @@
 
 ![App Screenshot](/public/img/app-screenshot.png)
 
-**アプリ名:** Music Event Organizer  
+**アプリ名:** Music Event Organizer
+**URL:** https://music-event-organizer-5f2702252ffc.herokuapp.com/
 **作成者:** 坂井駿介 / Shunsuke Sakai  
 **作成期間:** 2023-08 ～ Now
 
@@ -26,5 +27,5 @@ Music Event Organizerは、音楽イベントの計画と管理を効率化す�
 
 ## テストアカウント
 
-Email：sakai.shunsuke.tokyotech@gmail.com
-Password：sakaishunsuke
+- **Email：** sakai.shunsuke.tokyotech@gmail.com
+- **Password：** sakaishunsuke
