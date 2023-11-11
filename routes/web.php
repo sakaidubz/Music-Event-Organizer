@@ -58,10 +58,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('aut
 
 
 
-// Dashboardページ関係(不要)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// // Dashboardページ関係(不要)
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Profileページ関係
 Route::middleware('auth')->group(function () {
