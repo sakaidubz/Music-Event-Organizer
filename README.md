@@ -3,7 +3,7 @@
 ![App Screenshot](/public/img/app-screenshot.png)
 
 **アプリ名:** Music Event Organizer  
-**URL:** <a href="https://music-event-organizer-5f2702252ffc.herokuapp.com/" target="_blank">リンク(新規タブで開きます)</a>
+**URL:** <a href="https://music-event-organizer-5f2702252ffc.herokuapp.com/" target="_blank">リンク(新規タブで開きます)</a>  
 **作成者:** 坂井駿介 / Shunsuke Sakai  
 **作成期間:** 2023-08 ～ Now
 
