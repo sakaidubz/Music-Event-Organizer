@@ -1,66 +1,30 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Music Event Organizer
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![App Screenshot](/Music-Event-Organizer/public/img/app-screenshot.png)
 
-## About Laravel
+**アプリ名:** Music Event Organizer  
+**作成者:** 坂井駿介 / Shunsuke Sakai  
+**作成期間:** 2023-08 ～ Now
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## アプリケーション概要
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Music Event Organizerは、音楽イベントの計画と管理を効率化するために設計されたアプリケーションです。主催者や主催チーム向けに開発され、イベントの詳細情報を登録・編集し、予定をカレンダーに追加し、出演者を管理し、タイムテーブルを作成（未実装）することができます。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 背景ときっかけ
 
-## Learning Laravel
+私は音楽イベントの企画に参画していた際に、さまざまな作業が異なるプラットフォームで行われていることに気付きました。それをひとつのアプリケーションで統合し、音楽イベントの企画を効率化し、迅速に行うことを目指しています。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 主要機能
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **イベントの作成・編集・削除・招待機能:** 複数のイベントを1つのユーザーでアクセスできます。
+- **カレンダー機能:** 一つのカレンダーで複数のイベントの予定が可視化されます。
+- **ToDo機能:** 各イベントでのToDoリストが一つのページで確認できます。
+- **出演者機能:** 候補、交渉中、出演確定のステータスを含んだ出演者を登録でき、確定した出演者には出演時間帯の登録もできます（未実装）。
+- **タイムテーブル機能:** イベント当日の出演順を編集・確認できます（未実装）。
+- **ゲストリスト機能:** 出演者の集客を登録し、集客見込みの確認ができます（未実装）。
+- **費用計算機能:** 収入と支出の項目追加と費用計算、その結果と収支予測が確認できます（未実装）。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## テストアカウント
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Email：sakai.shunsuke.tokyotech@gmail.com
+Password：sakaishunsuke
