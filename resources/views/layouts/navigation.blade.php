@@ -101,6 +101,30 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                
+                <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{ __('Home') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('event-editor')" :active="request()->routeIs('event-editor')">
+                    {{ __('Event Editor') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('calendar')" :active="request()->routeIs('calendar')">
+                    {{ __('Calendar') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('cost-manager')" :active="request()->routeIs('cost-manager')">
+                    {{ __('Cost Manager') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('to-do')" :active="request()->routeIs('to-do')">
+                    {{ __('To Do') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('guestlist')" :active="request()->routeIs('guestlist')">
+                    {{ __('Guestlist') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('create-event')" :active="request()->routeIs('create-event')">
+                    {{ __('Create Event') }}
+                </x-responsive-nav-link>
+
+                
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
