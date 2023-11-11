@@ -1,6 +1,6 @@
 # Music Event Organizer
 
-![App Screenshot](/Music-Event-Organizer/public/img/app-screenshot.png)
+![App Screenshot](/public/img/app-screenshot.png)
 
 **アプリ名:** Music Event Organizer  
 **作成者:** 坂井駿介 / Shunsuke Sakai  
