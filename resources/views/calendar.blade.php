@@ -6,7 +6,7 @@
     </x-slot>
 
     <!--カレンダーの表示-->
-    <div class="w-4/5 mx-auto">
+    <div class="w-4/5 mx-auto max-w-7xl">
         <div id="calendar"></div>
     </div>
     

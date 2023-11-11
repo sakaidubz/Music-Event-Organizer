@@ -6,7 +6,9 @@
         
     </x-slot>
     
-    <p>今後実装予定</p>
+    <div class="max-w-7xl mx-auto p-6">
+        <h3>今後実装予定</h3>
+    </div>
     
         
     <x-slot name="footer">
